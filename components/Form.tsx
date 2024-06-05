@@ -141,7 +141,7 @@ export function ProfileForm() {
             {isLoading ? (
               <div className="flex gap-1">
                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-                "Please wait"
+                Please wait
               </div>
             ) : (
               "Submit"
