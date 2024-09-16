@@ -49,8 +49,8 @@ export function PhotoSlider() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className=" size-10 border-black " />
-      <CarouselNext className=" size-10 border-black " />
+      <CarouselPrevious className=" transition-all hover:scale-110 size-10 border-black " />
+      <CarouselNext className=" transition-all hover:scale-110 size-10 border-black " />
     </Carousel>
   );
 }

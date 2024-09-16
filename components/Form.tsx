@@ -24,8 +24,15 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
-  Email: z.string().min(2).email(),
-  content: z.string().min(20),
+  Email: z
+    .string()
+    .min(2, {
+      message: "Email must be at least 2 characters.",
+    })
+    .email(),
+  content: z.string().min(7, {
+    message: "message must be at least 7 characters.",
+  }),
 });
 
 export function ProfileForm() {
@@ -41,40 +48,48 @@ export function ProfileForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     setIsLoading(true);
-    emailjs
-      .send(
+
+    try {
+      await emailjs.send(
         process.env.NEXT_PUBLIC_SERVICE_ID || "",
         process.env.NEXT_PUBLIC_TEMPLATE_ID || "",
         values,
         {
           publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
         }
-      )
-      .then(
-        () => {
-          toast.success("Thank you for sending me a message 😁 ", {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          });
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-        }
-      )
-      .finally(() => {
-        setIsLoading(false);
+      );
+
+      toast.success("Thank you for sending me a message 😁 ", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
       });
+      form.reset();
+    } catch (error) {
+      toast.error("something went wrong try again later 😅 ", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -134,12 +149,12 @@ export function ProfileForm() {
             )}
           />
           <Button
-            className=" dark:bg-gray-800 dark:text-white w-1/3"
+            className=" dark:bg-gray-800 dark:text-white w-1/2 sm:w-1/3"
             type="submit"
             disabled={isLoading}
           >
             {isLoading ? (
-              <div className="flex gap-1">
+              <div className="flex px-2 justify-center items-center gap-1">
                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                 Please wait
               </div>

@@ -4,11 +4,10 @@ import Footer from "@/components/Footer";
 import Home from "@/components/Home";
 import Skills from "@/components/Skills";
 import Works from "@/components/Works";
-import Image from "next/image";
 
 export default function Homepage() {
   return (
-    <main className=" mx-auto flex flex-col min-h-screen max-w-7xl">
+    <main className=" mx-auto flex flex-col min-h-screen">
       {/* Home */}
       <Home />
       {/* about */}
@@ -20,7 +19,6 @@ export default function Homepage() {
       {/* contact me*/}
       <Contact />
       {/* Footer */}
-      <Footer />
     </main>
   );
 }

@@ -3,7 +3,10 @@ import Image from "next/image";
 
 function About() {
   return (
-    <section className="relative flex flex-col gap-10 sm:gap-6  items-center justify-center sm:items-start sm:justify-start pt-6 sm:px-[92px]  w-full min-h-[50vh] sm:min-h-screen pb-6">
+    <section
+      id="about"
+      className="relative flex flex-col gap-10 sm:gap-6  items-center justify-center sm:items-start sm:justify-start pt-6 sm:px-[92px]  w-full min-h-[50vh] sm:min-h-screen pb-6"
+    >
       <div className="flex w-full h-full">
         <div className="flex flex-col justify-center items-center sm:flex-row gap-10 h-full w-[100%] ">
           {/* left */}
@@ -38,7 +41,7 @@ function About() {
             </p>
             <a
               href="/images/cv.pdf"
-              className=" bg-black text-white rounded-md w-36 py-2 px-4"
+              className=" bg-black hover:scale-105 transition-all dark:bg-slate-200 dark:text-slate-800 text-white rounded-md w-36 py-2 px-4"
               download
             >
               Download Cv

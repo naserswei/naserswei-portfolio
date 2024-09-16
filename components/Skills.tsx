@@ -24,7 +24,10 @@ const progress = [
 
 function Skills() {
   return (
-    <section className="relative flex flex-col gap-6  items-center justify-center sm:items-start sm:justify-start pt-6 sm:px-[92px]  w-full min-h-screen pb-6">
+    <section
+      id="skill"
+      className="relative flex flex-col gap-6  items-center justify-center sm:items-start sm:justify-start pt-6 sm:px-[92px]  w-full min-h-screen pb-6"
+    >
       <div className="flex w-full h-full">
         <div className="flex flex-col justify-center items-center  sm:flex-row-reverse gap-10 h-full w-[100%] ">
           {/* left */}

@@ -5,7 +5,10 @@ import { PhotoSlider } from "./PhotoSlider";
 
 function Works() {
   return (
-    <section className="relative flex flex-col gap-6  items-center justify-center sm:items-start sm:justify-start pt-6 sm:px-[92px]  w-full min-h-screen">
+    <section
+      id="works"
+      className="relative flex flex-col gap-6  items-center justify-center sm:items-start sm:justify-start pt-6 sm:px-[92px]  w-full min-h-screen"
+    >
       <div className="flex w-full h-full">
         <div className="flex flex-col justify-center  mx-auto items-center sm:flex-row gap-10 h-full w-[90%] ">
           {/* left */}

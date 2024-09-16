@@ -1,7 +1,6 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -9,25 +8,36 @@ import {
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { ModeToggle } from "./Toggle";
+import { cn } from "@/lib/utils";
+type MenuProps = {
+  className?: string;
+};
 
-function MobileMenu() {
+function MobileMenu({ className }: MenuProps) {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu className="dark:stroke-black" color="white" strokeWidth={2} />
+        <Menu
+          className={cn("dark:stroke-black", className)}
+          color="white"
+          strokeWidth={2}
+        />
       </SheetTrigger>
       <SheetContent side={"left"}>
         <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
+          <SheetTitle>Welcome to my portfolio 😁</SheetTitle>
         </SheetHeader>
         <nav className="flex flex-col justify-center items-center mt-10 gap-10 ">
           <li>
-            <Link className=" text-[#F44336]" href="#">
+            <Link className=" text-[#F44336]" href="/">
               Home
             </Link>
           </li>
           <li>
-            <Link href="#">About</Link>
+            <Link href="/projects">Projects</Link>
+          </li>
+          <li>
+            <Link href="/#about">About</Link>
           </li>
           <li>
             <Link href="#">Skill</Link>

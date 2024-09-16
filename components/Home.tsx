@@ -1,45 +1,22 @@
-"use client";
-import {
-  CircleArrowDown,
-  Github,
-  Instagram,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+import { CircleArrowDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ModeToggle } from "./Toggle";
-import { useTheme } from "next-themes";
-import { TypeAnimation } from "react-type-animation";
 import MobileMenu from "./MobileMenu";
-import { useEffect, useState } from "react";
-import { CircularProgress } from "@mui/joy";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
+import Links from "./links";
+
+const TypingAnimation = dynamic(() => import("./TypingAnimation"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton className="duration-700 bg-slate-700 dark:bg-slate-300 w-[300px] h-[40px] rounded" />
+  ),
+});
 
 const Home = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  if (!mounted) {
-    // Show a fallback to avoid mismatches
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <CircularProgress size="lg" />
-      </div>
-    );
-  }
   return (
-    <section className=" relative pt-6 sm:px-[92px] px-6 flex flex-col gap-4 h-screen  ">
-      <Image
-        className="object-cover"
-        src={theme === "light" ? "/images/Union.png" : "/images/darkmode.png"}
-        fill
-        priority
-        alt="background image"
-      />
-
+    <section className=" relative pt-6 bg-[url('/images/Union.png')] dark:bg-[url('/images/darkmode.png')] sm:px-[92px] px-6 flex flex-col gap-4 h-screen bg-cover bg-center  ">
       {/* nav */}
       <div className="z-10 flex h-[6.7vh]">
         <nav className="max-w-lg relative hidden sm:flex sm:items-center gap-14 font-bold h-full dark:text-black text-white">
@@ -59,16 +36,19 @@ const Home = () => {
             </Link>
           </li>
           <li>
-            <Link href="#">About</Link>
+            <Link href="/projects">Projects</Link>
           </li>
           <li>
-            <Link href="#">Skill</Link>
+            <Link href="/#about">About</Link>
           </li>
           <li>
-            <Link href="#">Works</Link>
+            <Link href="/#skill">Skill</Link>
           </li>
           <li>
-            <Link href="#">Contact</Link>
+            <Link href="/#works">Works</Link>
+          </li>
+          <li>
+            <Link href="/#contact">Contact</Link>
           </li>
           <ModeToggle />
         </nav>
@@ -78,48 +58,12 @@ const Home = () => {
       </div>
 
       <div className=" z-10 flex flex-col justify-center gap-3 h-[80%] dark:text-black text-white">
-        <TypeAnimation
-          sequence={[
-            // Same substring at the start will only be typed once, initially
-            "Naser swei",
-            1000,
-            "",
-            1000,
-            "Software engeener",
-            1000,
-            "Full Stack",
-            1000,
-          ]}
-          speed={50}
-          className="text-4xl  font-bold"
-          repeat={Infinity}
-        />
+        <TypingAnimation />
         <p className=" text-2xl">Engineer + junior front-end Developor</p>
-        <div className="flex gap-3">
-          <Github
-            className=" bg-gray-500 p-2 flex justify-center items-center rounded-full w-9 h-9"
-            fill="black"
-            strokeWidth={0}
-          />
-
-          <Twitter
-            className=" bg-gray-500 p-2 flex justify-center items-center rounded-full w-9 h-9"
-            fill="black"
-            strokeWidth={0}
-          />
-
-          <Linkedin
-            className=" bg-gray-500 p-2 flex justify-center items-center rounded-full w-9 h-9"
-            fill="black"
-            strokeWidth={0}
-          />
-
-          <Instagram
-            className=" bg-gray-500 p-2 flex justify-center items-center rounded-full w-9 h-9"
-            color="black"
-            strokeWidth={1}
-          />
-        </div>
+        <Links
+          className=" dark:hover:bg-slate-800 drak:bg-slate-600"
+          fill="dark:fill-white"
+        />
       </div>
       <div className=" text-white z-10 flex gap-2">
         <CircleArrowDown />
