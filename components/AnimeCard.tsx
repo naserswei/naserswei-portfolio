@@ -1,5 +1,3 @@
-import React from "react";
-
 function AnimeCard() {
   return (
     <div className="group relative h-[280px] w-[190px] cursor-pointer overflow-hidden rounded-md bg-[url('https://demonslayer-hinokami.sega.com/img/purchase/digital-standard.jpg')] bg-cover shadow-md transition-all duration-300 hover:scale-95">

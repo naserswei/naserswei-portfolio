@@ -1,4 +1,3 @@
-import React from "react";
 import { ProfileForm } from "./Form";
 
 function Contact() {

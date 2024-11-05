@@ -1,7 +1,6 @@
 import { CircularProgress } from "@mui/joy";
-import { CircleArrowDown, Instagram } from "lucide-react";
+import { CircleArrowDown } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 
 const progress = [
   {

@@ -1,8 +1,5 @@
 "use client";
-
-import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -12,6 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import { useRef } from "react";
 
 const photos = [
   {
@@ -22,9 +20,7 @@ const photos = [
 ];
 
 export function PhotoSlider() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
-  );
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
     <Carousel
